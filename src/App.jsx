@@ -1,5 +1,4 @@
 import { useState } from "react"
-import CreateTask from "./components/CreateTask"
 import Tasks from "./components/Tasks"
 
 function App () {
@@ -32,13 +31,18 @@ function App () {
     setTasks(newTasks)
   }
 
+  function deleteTask(taskId) { 
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="w-screen h-screen bg-slate-400 flex flex-wrap justify-center p-5">
       <div className="w-[500px]">
         <h1 className="text-3xl text-slate-100 font-bold text-center m-8">
           Gerenciador de Tarefas
         </h1>
-        <Tasks tasks={tasks} onTaskClick={onTaskClick}/>
+        <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask}/>
       </div>
     </div>
   )
