@@ -51,14 +51,12 @@ function App () {
   }
 
   return (
-    <div className="w-full min-h-screen bg-slate-400 flex flex-wrap justify-center p-5">
-      <div className="w-[500px] space-y-4">
-        <h1 className="text-3xl text-slate-100 font-bold text-center m-y-3">
-          Gerenciador de Tarefas
-        </h1>
-        <AddTasks addTask={addTask}/>
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask}/>
-      </div>
+    <div className="w-[500px] space-y-4">
+      <h1 className="text-3xl text-slate-100 font-bold text-center m-y-3">
+        Gerenciador de Tarefas
+      </h1>
+      <AddTasks addTask={addTask}/>
+      <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask}/>
     </div>
   )
 }
