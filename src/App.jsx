@@ -1,23 +1,37 @@
 import { useState } from "react"
 import Tasks from "./components/Tasks"
+import AddTasks from "./components/AddTasks";
+import { v4 } from "uuid";
 
 function App () {
   const [tasks, setTasks] = useState([{
-    id: 1,
+    id: v4(),
     title: "Estudar Programação",
     description: "Estudar muito para ganhar muito",
     isCompleted: false
   }, {
-    id: 2,
+    id: v4(),
     title: "Estudar Inglês",
     description: "Estudar muito para falar muito",
     isCompleted: false
   }, {
-    id: 3,
+    id: v4(),
     title: "Estudar Matemática",
     description: "Estudar muito para calcular muito",
     isCompleted: false
   }]);
+
+  function addTask (title, description) {
+    const newTask = {
+      id: v4(),
+      title,
+      description,
+      isCompleted: false
+    }
+
+    setTasks([...tasks, newTask])
+    console.log(newTask.id)
+  }
   
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
@@ -37,11 +51,12 @@ function App () {
   }
 
   return (
-    <div className="w-screen h-screen bg-slate-400 flex flex-wrap justify-center p-5">
-      <div className="w-[500px]">
-        <h1 className="text-3xl text-slate-100 font-bold text-center m-8">
+    <div className="w-full min-h-screen bg-slate-400 flex flex-wrap justify-center p-5">
+      <div className="w-[500px] space-y-4">
+        <h1 className="text-3xl text-slate-100 font-bold text-center m-y-3">
           Gerenciador de Tarefas
         </h1>
+        <AddTasks addTask={addTask}/>
         <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask}/>
       </div>
     </div>
