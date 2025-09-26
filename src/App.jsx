@@ -1,25 +1,17 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Tasks from "./components/Tasks"
 import AddTasks from "./components/AddTasks";
 import { v4 } from "uuid";
 
 function App () {
-  const [tasks, setTasks] = useState([{
-    id: v4(),
-    title: "Estudar Programação",
-    description: "Estudar muito para ganhar muito",
-    isCompleted: false
-  }, {
-    id: v4(),
-    title: "Estudar Inglês",
-    description: "Estudar muito para falar muito",
-    isCompleted: false
-  }, {
-    id: v4(),
-    title: "Estudar Matemática",
-    description: "Estudar muito para calcular muito",
-    isCompleted: false
-  }]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks") || [{id: 2}]
+  ));
+
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
 
   function addTask (title, description) {
     const newTask = {
@@ -51,7 +43,7 @@ function App () {
   }
 
   return (
-    <div className="w-[500px] space-y-4">
+    <div className="w-fit space-y-4">
       <h1 className="text-3xl text-slate-100 font-bold text-center m-y-3">
         Gerenciador de Tarefas
       </h1>
