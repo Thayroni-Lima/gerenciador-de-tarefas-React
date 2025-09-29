@@ -2,8 +2,6 @@
 
 Este é um projeto de um Gerenciador de Tarefas (To-Do List) simples e funcional, desenvolvido com React. A aplicação permite aos usuários adicionar, completar, excluir e visualizar detalhes de suas tarefas de forma intuitiva.
 
-[Demonstração do Projeto](https://i.imgur.com/BoPxnxm.mp4)
-
 ---
 
 ## ✨ Funcionalidades Principais
