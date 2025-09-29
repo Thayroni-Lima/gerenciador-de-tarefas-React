@@ -27,7 +27,6 @@ function AddTasks ({addTask}) {
                     onChange={(event) => setDescripton(event.target.value)}/>
                 
                 <button
-                    type="button"
                     onClick={() => {
                         if (!title.trim() || !descripton.trim()) {
                             return alert("Título ou Descrição vazios");
